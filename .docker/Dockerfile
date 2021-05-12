@@ -21,9 +21,7 @@ RUN { \
     echo 'opcache.enable_cli=1'; \
     } > /usr/local/etc/php/conf.d/php-opocache-cfg.ini
 
-COPY default.conf /etc/nginx/sites-enabled/default
 COPY entrypoint.sh /etc/entrypoint.sh
-
 RUN chmod +x /etc/entrypoint.sh
 
 WORKDIR /var/www/app
