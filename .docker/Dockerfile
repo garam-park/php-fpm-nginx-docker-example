@@ -21,6 +21,14 @@ RUN { \
     echo 'opcache.enable_cli=1'; \
     } > /usr/local/etc/php/conf.d/php-opocache-cfg.ini
 
+# GD
+# Setup GD extension
+RUN apt-get install -y libwebp-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev zlib1g-dev libzip-dev
+RUN docker-php-ext-install zip
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+RUN docker-php-ext-install gd
+RUN docker-php-ext-enable gd
+
 COPY entrypoint.sh /etc/entrypoint.sh
 RUN chmod +x /etc/entrypoint.sh
 
